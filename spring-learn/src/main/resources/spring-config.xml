@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+">
+
+		<aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+	<!--	<bean id="testBean" class="org.springframework.pojo.Student" init-method="afterPropertiesSet"-->
+	<!--		  destroy-method="destroy">-->
+	<!--		<property name="name" value="hello spring"/>-->
+	<!--		<replaced-method name="getName" replacer="studentMethodReplacer"/>-->
+	<!--	</bean>-->
+	<!--	<bean id="studentMethodReplacer" class="org.springframework.config.StudentMethodReplacer"/>-->
+
+	<!--lookup-method-->
+	<!--	<bean id="userBeanTest" class="org.springframework.pojo.UserBeanTest">-->
+	<!--		<lookup-method bean="userB" name="getBean"></lookup-method>-->
+	<!--		&lt;!&ndash;		<lookup-method bean="userA" name="getBean"></lookup-method>&ndash;&gt;-->
+	<!--	</bean>-->
+	<!--	<bean id="userA" class="org.springframework.pojo.UserA"/>-->
+	<!--	<bean id="userB" class="org.springframework.pojo.UserB"/>-->
+
+	<!--	<bean id="beanFactoryPostProcessorTest" class="org.springframework.config.BeanFactoryPostProcessorTest">-->
+	<!--	</bean>-->
+	<!--	<bean id="beanDefinitionRegistryPostProcessorTest" class="org.springframework.config.BeanDefinitionRegistryPostProcessorTest">-->
+	<!--	</bean>-->
+	<!--	<bean id="beanPostProcessorTest" class="org.springframework.config.BeanPostProcessorTest">-->
+	<!--	</bean>-->
+	<!--	<bean id="instantiationAwareBeanPostProcessorTest"-->
+	<!--		  class="org.springframework.config.InstantiationAwareBeanPostProcessorTest">-->
+	<!--	</bean>-->
+
+	<!--FactoryBean-->
+	<!--	<bean id="carFactoryBean" class="org.springframework.config.CarFactoryBean">-->
+	<!--		<property name="id" value="368"/>-->
+	<!--	</bean>-->
+
+	<!--aop-->
+<!--	<bean id="aopBean" class="org.springframework.aop.AopBean"/>-->
+	<bean class="org.springframework.aop.AspectJTest"/>
+
+	<!--circledepend-->
+	<bean id="classA" class="org.springframework.circledepends.ClassA">
+		<property name="classB" ref="classB"/>
+	</bean>
+	<bean id="classB" class="org.springframework.circledepends.ClassB">
+		<property name="classA" ref="classA"/>
+	</bean>
+
+
+</beans>
